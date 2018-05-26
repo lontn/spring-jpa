@@ -41,9 +41,9 @@
       <!-- Configuring Connection Pool -->
       <property name="hibernate.connection.provider_class" value="com.zaxxer.hikari.hibernate.HikariConnectionProvider" />
       <property name="hibernate.hikari.dataSourceClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDataSource" />
-      <property name="hibernate.hikari.dataSource.url" value="jdbc:sqlserver://STAPDB01:1433;DatabaseName=TempTable;SendStringParametersAsUnicode=false" />
-      <property name="hibernate.hikari.dataSource.user" value="portal" />
-      <property name="hibernate.hikari.dataSource.password" value="apportal" />
+      <property name="hibernate.hikari.dataSource.url" value="jdbc:sqlserver://localhost:14333;DatabaseName=TempTable;SendStringParametersAsUnicode=false" />
+      <property name="hibernate.hikari.dataSource.user" value="sa" />
+      <property name="hibernate.hikari.dataSource.password" value="root123!" />
       <property name="hibernate.hikari.maximumPoolSize" value="20" />
       <!-- cache prep stmts 
       <property name="hibernate.hikari.dataSource.cachePrepStmts" value="true" />
