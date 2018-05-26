@@ -1,0 +1,56 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+  version="2.1">
+
+  <persistence-unit name="persistenceProcess">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>com.newegg.autopricing.cdp.jpa.entity.DimDate</class>
+    <class>com.newegg.autopricing.cdp.jpa.entity.DimProduct</class>
+    <class>com.newegg.autopricing.cdp.jpa.entity.DimStore</class>
+    <class>com.newegg.autopricing.cdp.jpa.entity.FactSales</class>
+    <class>com.newegg.autopricing.cdp.jpa.entity.Tag</class>
+    <class>com.newegg.autopricing.cdp.jpa.entity.Post</class>
+    <properties>
+      <!-- Configuring JDBC properties 
+      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://STAPDB01:1433;DatabaseName=ContentCenter;SendStringParametersAsUnicode=false" />
+      <property name="javax.persistence.jdbc.user" value="portal" />
+      <property name="javax.persistence.jdbc.password" value="apportal" />-->
+ 
+      <!-- Hibernate properties -->
+      <!-- 顯示實際操作資料庫時的SQL --> 
+      <property name="hibernate.show_sql" value="true" />
+      <!-- 將顯示的SQL排版，方便觀看 -->
+      <property name="hibernate.format_sql" value="false" />
+      <!-- SQL方言，這邊設定的是MSSQL -->
+      <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2008Dialect" />
+      <!-- Automatically validates or exports schema DDL to the database when the SessionFactory is created. 
+           With create-drop, the database schema will be dropped when the SessionFactory is closed explicitly.
+      -->
+      <property name="hibernate.hbm2ddl.auto" value="validate" />
+      <!-- <property name="hibernate.hbm2ddl.auto" value="create" /> -->
+
+      <!-- Configuring Connection Pool 
+      <property name="hibernate.c3p0.min_size" value="5" />
+      <property name="hibernate.c3p0.max_size" value="20" />
+      <property name="hibernate.c3p0.timeout" value="500" />
+      <property name="hibernate.c3p0.max_statements" value="50" />
+      <property name="hibernate.c3p0.idle_test_period" value="2000" />-->
+ 
+      <!-- Configuring Connection Pool -->
+      <property name="hibernate.connection.provider_class" value="com.zaxxer.hikari.hibernate.HikariConnectionProvider" />
+      <property name="hibernate.hikari.dataSourceClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDataSource" />
+      <property name="hibernate.hikari.dataSource.url" value="jdbc:sqlserver://STAPDB01:1433;DatabaseName=TempTable;SendStringParametersAsUnicode=false" />
+      <property name="hibernate.hikari.dataSource.user" value="portal" />
+      <property name="hibernate.hikari.dataSource.password" value="apportal" />
+      <property name="hibernate.hikari.maximumPoolSize" value="20" />
+      <!-- cache prep stmts 
+      <property name="hibernate.hikari.dataSource.cachePrepStmts" value="true" />
+      <property name="hibernate.hikari.dataSource.prepStmtCacheSize" value="250" />
+      <property name="hibernate.hikari.dataSource.prepStmtCacheSqlLimit" value="2048" />
+      <property name="hibernate.hikari.dataSource.useServerPrepStmts" value="true" />-->
+    </properties>
+  </persistence-unit>
+
+</persistence>
