@@ -11,6 +11,9 @@
     <class>com.newegg.autopricing.cdp.jpa.entity.FactSales</class>
     <class>com.newegg.autopricing.cdp.jpa.entity.Tag</class>
     <class>com.newegg.autopricing.cdp.jpa.entity.Post</class>
+    <class>com.newegg.autopricing.cdp.jpa.entity.Person</class>
+    <class>com.newegg.autopricing.cdp.jpa.entity.EMail</class>
+    <class>com.newegg.autopricing.cdp.jpa.entity.Phone</class>
     <properties>
       <!-- Configuring JDBC properties 
       <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />

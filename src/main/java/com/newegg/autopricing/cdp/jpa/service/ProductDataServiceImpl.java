@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.newegg.autopricing.cdp.jpa.entity.DimProduct;
 import com.newegg.autopricing.cdp.jpa.entity.FactSales;
+import com.newegg.autopricing.cdp.jpa.entity.Person;
 import com.newegg.autopricing.cdp.jpa.entity.Post;
 
 /**
@@ -85,6 +86,18 @@ public class ProductDataServiceImpl implements ProductDataService {
 //        }
 //    }
 
+    @Transactional
+    public void savePerson(Person person) {
+        EntityManager eManager = entityManager.getEntityManagerFactory().createEntityManager();
+        EntityTransaction etx = eManager.getTransaction();
+        try {
+            etx.begin();
+            entityManager.persist(person);
+            etx.commit();
+        } finally {
+            entityManager.close();
+        }
+    }
 //    @Transactional
     public void saveProduct(DimProduct product) {
 //        L.info("entityManager:{}", entityManager.getTransaction());
@@ -98,4 +111,5 @@ public class ProductDataServiceImpl implements ProductDataService {
 //        }
         
     }
+
 }
