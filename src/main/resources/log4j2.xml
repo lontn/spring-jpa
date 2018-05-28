@@ -39,6 +39,14 @@
       <AppenderRef ref="ErrFile" />
       <AppenderRef ref="Console" />
     </logger>
+    <logger name="org.hibernate.SQL" level="DEBUG" additivity="false" >   
+      <appender-ref ref="AllFile" />
+      <AppenderRef ref="Console" />
+    </logger>
+    <logger name="org.hibernate.type" level="TRACE" additivity="false" >
+      <appender-ref ref="AllFile" />
+      <AppenderRef ref="Console" />
+    </logger>
     <Root level="info">
       <AppenderRef ref="AllFile" />
       <AppenderRef ref="ErrFile" />

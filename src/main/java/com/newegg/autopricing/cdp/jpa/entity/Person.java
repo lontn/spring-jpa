@@ -16,9 +16,6 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 @javax.persistence.Entity
 @Table(name = "TB_Person")
 public class Person {
@@ -33,22 +30,18 @@ public class Person {
     @NotNull
     private int age;
 
-    @OneToMany(fetch = FetchType.EAGER, targetEntity = EMail.class, 
-            cascade = { 
-                    CascadeType.PERSIST, CascadeType.REMOVE,
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = EMail.class, cascade = { CascadeType.PERSIST, CascadeType.REMOVE,
             CascadeType.MERGE, CascadeType.REFRESH })
-    @JoinColumns(value = { @JoinColumn(name = "PersonId", referencedColumnName = "Id") })
-//    @Fetch(value = FetchMode.SUBSELECT)
-    @OrderBy(value="EMail Desc")
+    @JoinColumns(value = { @JoinColumn(name = "PersonId", referencedColumnName = "Id", nullable = false) })
+    // @Fetch(value = FetchMode.SUBSELECT)
+    @OrderBy(value = "EMail Desc")
     private List<EMail> eMails = new ArrayList<EMail>();
 
-//    @OneToMany(fetch = FetchType.EAGER, targetEntity = Phone.class, 
-//            cascade = { 
-//                    CascadeType.PERSIST, CascadeType.REMOVE,
-//            CascadeType.MERGE, CascadeType.REFRESH })
-//    @JoinColumns(value = { @JoinColumn(name = "PersonId", referencedColumnName = "Id") })
-//    @Fetch(value = FetchMode.SUBSELECT)
-//    private List<Phone> phones = new ArrayList<Phone>();
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = Phone.class, cascade = { CascadeType.PERSIST, CascadeType.REMOVE,
+            CascadeType.MERGE, CascadeType.REFRESH })
+    @JoinColumns(value = { @JoinColumn(name = "PersonId", referencedColumnName = "Id", nullable = false) })
+    // @Fetch(value = FetchMode.SUBSELECT)
+    private List<Phone> phones = new ArrayList<Phone>();
 
     public Integer getId() {
         return id;
@@ -82,12 +75,12 @@ public class Person {
         this.eMails = eMails;
     }
 
-//    public List<Phone> getPhones() {
-//        return phones;
-//    }
-//
-//    public void setPhones(List<Phone> phones) {
-//        this.phones = phones;
-//    }
+    public List<Phone> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(List<Phone> phones) {
+        this.phones = phones;
+    }
 
 }

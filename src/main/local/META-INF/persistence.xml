@@ -26,6 +26,8 @@
       <property name="hibernate.show_sql" value="true" />
       <!-- 將顯示的SQL排版，方便觀看 -->
       <property name="hibernate.format_sql" value="false" />
+      <!-- Hibernate將在SQL內部生成註釋，以便於調試，默認為false -->
+      <property name="hibernate.use_sql_comments" value="false" />
       <!-- SQL方言，這邊設定的是MSSQL -->
       <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2008Dialect" />
       <!-- Automatically validates or exports schema DDL to the database when the SessionFactory is created. 
