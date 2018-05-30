@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.newegg.autopricing.cdp.jpa.entity.Article;
 import com.newegg.autopricing.cdp.jpa.entity.DimProduct;
 import com.newegg.autopricing.cdp.jpa.entity.FactSales;
 import com.newegg.autopricing.cdp.jpa.entity.Person;
@@ -93,6 +94,19 @@ public class ProductDataServiceImpl implements ProductDataService {
         try {
             etx.begin();
             entityManager.persist(person);
+            etx.commit();
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Transactional
+    public void saveArticle(Article article) {
+        EntityManager eManager = entityManager.getEntityManagerFactory().createEntityManager();
+        EntityTransaction etx = eManager.getTransaction();
+        try {
+            etx.begin();
+            entityManager.persist(article);
             etx.commit();
         } finally {
             entityManager.close();
